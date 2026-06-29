@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #14213d;
+  --color-ink-light: #243152;
+  --color-paper: #fbf9f6;
+  --color-paper-raised: #ffffff;
+  --color-line: #e3ddd1;
+  --color-slate: #5c6470;
+  --color-slate-light: #8b92a0;
+
+  --color-amber: #e6a23c;
+  --color-amber-bg: #fdf3e0;
+  --color-forest: #3d8361;
+  --color-forest-bg: #e7f3ec;
+  --color-brick: #c1502e;
+  --color-brick-bg: #fbe9e3;
+  --color-gray-status: #8b92a0;
+  --color-gray-status-bg: #eef0f2;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Source Serif 4", Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, Menlo, monospace;
+
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-light: var(--color-ink-light);
+  --color-paper: var(--color-paper);
+  --color-paper-raised: var(--color-paper-raised);
+  --color-line: var(--color-line);
+  --color-slate: var(--color-slate);
+  --color-slate-light: var(--color-slate-light);
+  --color-amber: var(--color-amber);
+  --color-amber-bg: var(--color-amber-bg);
+  --color-forest: var(--color-forest);
+  --color-forest-bg: var(--color-forest-bg);
+  --color-brick: var(--color-brick);
+  --color-brick-bg: var(--color-brick-bg);
+  --color-gray-status: var(--color-gray-status);
+  --color-gray-status-bg: var(--color-gray-status-bg);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Subtle paper texture via layered gradients, kept very quiet */
+.paper-texture {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(20, 33, 61, 0.025) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(20, 33, 61, 0.02) 0%, transparent 45%);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.status-pending {
+  background: var(--color-amber-bg);
+  color: #8a5a14;
+}
+.status-approved {
+  background: var(--color-forest-bg);
+  color: var(--color-forest);
+}
+.status-rejected {
+  background: var(--color-brick-bg);
+  color: var(--color-brick);
+}
+.status-cancelled {
+  background: var(--color-gray-status-bg);
+  color: var(--color-gray-status);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-light);
+}
